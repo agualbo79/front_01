@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sala de chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="rootDiv">
+        <!-- Barra lateral con servidores y usuario -->
+        <div class="side-bar">
+            <div class="content">
+            <div class="nav">
+                <div class="guildSettings">
+                    <div class="navguild">
+                        <div class="guild-opener">
+                            <div class="navGuildItems">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+         
+            </div>
+
+            <!-- Contenedor principal con servidores, canales y mensajes -->
+        <div class="main-container">
+             <!-- columna de servidores -->
+            <div class="servers">
+                
+                <!-- Lista de servidores -->
+                
+                <div class="servidor">
+                    <!-- Agregar un div para el ícono circular -->
+                    <div class="icono-servidor">
+                        <!-- Mostrar la inicial del nombre del servidor -->
+                        <span class="inicial-servidor">
+                            <!-- Aquí debes colocar la inicial del nombre del servidor -->
+                            S <!-- Reemplaza esto con la inicial adecuada -->
+                        </span>
+                    </div>
+                    <!-- Mostrar el nombre completo del servidor (oculto) -->
+                    <div class="nombre-servidor" data-servidor-id="ID_DEL_SERVIDOR"></div>
+                </div>
+
+                <div id="lista-servidores"class="servidores">
+                    
+                    <div data-servidor-id="ID_DEL_SERVIDOR">Servidores</div>
+                    <hr class="server-divider" />
+                </div>
+                
+                <div class="homebutton">
+                    <svg class="homeIcon" aria-hidden="false" width="28" height="20" viewBox="0 0 28 20">
+                        <path fill="#FFFFFF">
+                            <!-- Agrega el contenido del icono aquí -->
+                        </path>
+                    </svg>
+                </div>
+                <hr class="server-divider" />
+                <!-- Aquí debes generar dinámicamente los servidores -->
+             
+                
+                <!-- Botón para crear un nuevo servidor -->
+                
+                <div class="pf4" id="crear-servidor-btn">
+                   
+                    <p class="inviteButton">+</p>
+                </div>
+            </div>
+            <!-- Columna de canales -->
+        <div class="column channels">
+            <div id="lista-canales">
+                <div class="canal" data-canal-id="ID_DEL_CANAL_1">Canales</div>
+                <div class="canal" data-canal-id="ID_DEL_CANAL_2"></div>
+                
+            </div>
+           <!-- Botón para crear un nuevo canal -->
+           
+<div class="server invite" id="crear-canal-btn">
+    <p class="inviteButton">+</p>
+</div>
+
+<!-- Formulario para crear un nuevo canal (inicialmente oculto) -->
+<form id="crear-canal-form" style="display: none;">
+    <label for="nombre-canal">Nombre del Canal:</label>
+    <input type="text" id="nombre-canal" name="nombre" required>
+    
+    <button type="submit">Crear Canal</button>
+</form>
+                
+            </div>
+        </div>
+
+        
+            
+           
+            
+        </div>
+        <form id="crear-servidor-form" method="POST" action="/crear_servidor">
+            <label for="nombre-servidor">Nombre del Servidor:</label>
+            <input type="text" id="nombre-servidor" name="nombre" required>
+                        
+            <label for="descripcion-servidor">Descripción del Servidor:</label>
+            <textarea id="descripcion-servidor" name="descripcion" required></textarea>
+                        
+            <button type="submit">Crear Servidor</button>
+        </form>
+<!-- Columna de mensajes y formulario de mensajes en un contenedor -->
+<div class="columna-mensajes">
+    <!-- Barra de navegación en la parte superior de la columna de mensajes -->
+    <div class="navigation-bar">
+        <!-- Icono de perfil -->
+        <div class="nav-icon" id="user-icon">
+            <i class="fas fa-user"></i>
+        </div>
+    
+        <div class="overlay" id="overlay">
+            <div class="user-card">
+                <span id="close-button" class="close-button">×</span>
+                <form id="edit-form">
+                    <img src="https://www.softzone.es/app/uploads/2018/04/guest.png?x=480&quality=40" alt="Foto de perfil" width="200" height="150">
+                    <input type="file" id="profile-image" accept="image/*">
+                    <input type="text" id="username" value="Nombre de Usuario">
+                    <p>ID de Usuario: 123456</p>
+                    <button type="button" id="edit-button">Editar</button>
+                    <button type="submit" id="save-button" style="display: none;">Guardar</button>
+                </form>
+            </div>
+        </div>
+        <!-- Icono de chincheta -->
+        <div class="nav-icon">
+            <i class="fas fa-thumbtack"></i>
+        </div>
+        <!-- Buscador -->
+        <div class="nav-search">
+            <input type="text" placeholder="Buscar servidores...">
+            <i class="fas fa-search"></i>
+            
+        </div>
+        
+        
+    </div>
+
+    <div class="column messages">
+        <div id="lista-mensajes" class="lista-mensajes">
+            {% for mensaje in messages %}
+                <div class="mensaje">{{ mensaje.contenido }}</div>
+            {% endfor %}
+        </div>
+        
+        <!-- Formulario para enviar mensajes -->
+        <form id="enviar-mensaje-form">
+            <input type="text" id="mensaje" placeholder="Escribe tu mensaje..." required>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById("edit-button").addEventListener("click", function () {
+        // Mostrar el formulario de edición
+        document.getElementById("edit-form").style.display = "block";
+        document.getElementById("edit-button").style.display = "none";
+    });
+
+    document.getElementById("close-button").addEventListener("click", function () {
+        // Ocultar el formulario de edición
+        document.getElementById("edit-form").style.display = "none";
+        document.getElementById("edit-button").style.display = "block";
+    });
+
+    document.getElementById("profile-image").addEventListener("change", function () {
+        // Actualizar la imagen de perfil al seleccionar un archivo
+        const imageInput = document.getElementById("profile-image");
+        const profileImage = document.querySelector(".user-card img");
+        const file = imageInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                profileImage.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+        
+</body>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+<script src="{{ url_for('static', filename='js/mensajes.js') }}"></script>
+
+
+</html>

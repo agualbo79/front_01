@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    
+</head>
+
+<body>
+    <div id="container-login">
+        <div id="title">
+            <i class="material-icons lock">lock</i> Login
+        </div>
+
+        <form id="login-form" method="POST" action="/usuario/login">
+            <div class="input">
+                <div class="input-addon">
+                    <i class="material-icons">face</i>
+                </div>
+                <input id="username" name="username" placeholder="Username" type="text" required class="validate" autocomplete="off">
+            </div>
+        
+            <div class="clearfix"></div>
+        
+            <div class="input">
+                <div class="input-addon">
+                    <i class="material-icons">vpn_key</i>
+                </div>
+                <input id="password" name="password" placeholder="Password" type="password" required class="validate" autocomplete="off">
+            </div>
+        
+            <div class="remember-me">
+                <input type="checkbox">
+                <span style="color: #DDD">Recordarme</span>
+            </div>
+        
+            <input type="submit" value="Log In" />
+        </form>
+        
+
+        <div class="forgot-password">
+            <a href="#">¿Olvistaste tu contraseña?</a>
+        </div>
+        <div class="privacy">
+            <a href="#">Politias de privacidad</a>
+        </div>
+
+        <div class="register">
+            ¿No tienes cuenta?
+            <a href="#"><button id="register-link">Registraste aquí</button></a>
+        </div>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</html>

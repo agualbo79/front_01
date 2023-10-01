@@ -1,0 +1,495 @@
+
+body {
+    background-color: #333;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    padding: 0; /* Elimina el espacio de relleno predeterminado del cuerpo */
+    height: 100vh; /* Establece la altura del cuerpo al 100% del viewport height */
+
+}
+
+.rootDiv {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Columnas para servidores, canales y mensajes */
+    grid-gap: 5px; /* Espacio entre las columnas */
+    height: 100%; /* Establece la altura al 100% del viewport height */
+    margin-left: auto;
+}
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Columnas para servidores, canales y mensajes */
+    grid-gap: 10px; /* Espacio entre las columnas */
+    height: 100%; 
+}
+
+.servidores {
+    grid-column: 1 / 2; /* Columna de servidores */
+}
+
+.canales {
+    grid-column: 2 / 3; /* Columna de canales */
+}
+
+.mensajes {
+    grid-column: 3 / 4; /* Columna de mensajes */
+}
+.side-bar {
+    background-color: #222; /* Fondo de la barra lateral */
+    min-width: 50px;
+    padding: 10px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
+    width: 50px;
+}
+
+.userBox {
+    display: flex;
+    align-items: center;
+    margin-top: 5px; 
+    width: 50px;
+}
+
+.userBox .userAvatar {
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 5px; /* Reducir el margen derecho */
+}
+.userBox .userinfo {
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    overflow: hidden; /* Oculta el texto que no cabe en el contenedor */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto se corta */
+    width: auto; /* Ajusta el ancho automáticamente al contenido */
+}
+.userinfo {
+    flex: 1;
+}
+
+.servers {
+    background: #202225;
+    margin-top: 5px;
+    width: 90px; /* Cambia este valor según el ancho deseado */
+    
+}
+
+.server-divider {
+    border-top: 1px solid #444; /* Línea divisoria entre servidores */
+    margin-top: 10px;
+}
+
+.server {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    cursor: pointer;
+}
+
+
+.server:hover {
+    background-color: #444; /* Cambia el color de fondo al pasar el mouse */
+}
+
+.server.invite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+}
+.servidores.selected {
+    background-color: #007bff;
+    color: white; 
+    cursor: pointer; 
+}
+.inviteButton {
+    font-size: 34px;
+    color: #fff;
+    margin-left: auto; /* Empuja el botón hacia el centro */
+    margin-right: auto; /* Empuja el botón hacia el centro */
+}
+
+.hashtag {
+    font-size: 24px; /* Ajusta el tamaño según tus preferencias */
+}
+/* Estilos para la columna de mensajes */
+.column.messages {
+    background: #36393F;  /* fallback for old browsers */
+    margin-left: 150px;
+    border-radius: 10px; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+    width:900px;
+    overflow-y: auto; 
+    color: #000;
+    height: 600px;
+    overflow-y: auto; /* Hace que la columna sea desplazable si es necesario */
+    display: flex;
+    flex-direction: column-reverse; /* Invierte la dirección de apilamiento */
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+    
+}
+.lista-mensajes {
+    background-color: #2F3136;
+    color: #fff; 
+    border-radius: 10px; 
+    padding: 20px; 
+    margin-bottom: 10px; 
+    text-align: right; 
+    clear: both; 
+    display: block;
+    
+}
+
+
+#crear-servidor-form {
+    display: none; /* Inicialmente oculto */
+    background-color: #555; /* Fondo del formulario */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+#crear-servidor-form label {
+    color: #fff;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#crear-servidor-form input[type="text"],
+#crear-servidor-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #666; /* Fondo de los campos de entrada */
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#crear-servidor-form button[type="submit"] {
+    background-color: #007bff; /* Color del botón de enviar */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#crear-servidor-form button[type="submit"]:hover {
+    background-color: #0056b3; /* Cambia el color al pasar el mouse */
+}
+
+
+/* Estilos para el botón "Crear Canal" */
+#crear-canal-btn {
+    background-color: #555; /* Fondo del botón */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    margin-top: 550px; /* Agrega margen superior para separarlo de los canales */
+}
+
+#crear-canal-btn .inviteButton {
+    font-size: 24px;
+    color: #fff;
+}
+
+#crear-canal-btn:hover {
+    background-color: #444; /* Cambia el color al pasar el mouse */
+}
+
+/* Estilos para el formulario de crear canal */
+#crear-canal-form {
+    background-color: #555; /* Fondo del formulario */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    margin-top: 10px; /* Agrega margen superior para separarlo de los canales */
+    display: none; /* Inicialmente oculto */
+}
+
+#crear-canal-form label {
+    color: #fff;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#crear-canal-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #666; /* Fondo de los campos de entrada */
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#crear-canal-form button[type="submit"] {
+    background-color: #007bff; /* Color del botón de enviar */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#crear-canal-form button[type="submit"]:hover {
+    background-color: #0056b3; /* Cambia el color al pasar el mouse */
+}
+
+
+
+
+
+
+#enviar-mensaje-form {
+    background-color: #202225;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    bottom: 0; /* Coloca el formulario en la parte inferior */
+    left: 0;
+    right: 0;
+    margin: auto; /* Centra horizontalmente */
+    width: 600px;
+    height: auto; /* Cambia la altura a "auto" para que se ajuste automáticamente al contenido */
+}
+
+#enviar-mensaje-form input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    background-color: #666;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#enviar-mensaje-form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.lista-canales .canal[data-canal-id]:hover {
+    cursor: pointer;
+    background-color: blue;
+}
+
+.servidores div[data-servidor-id]:hover,
+.lista-canales div[data-canal-id]:hover {
+    cursor: pointer;
+    background-color: blue;
+}
+.column.channels .canal:hover {
+    cursor: pointer;
+    background-color: blue;
+    
+}
+.column.channels {
+    background-color: #2F3136;
+    width: 167px;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos verticalmente en una columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    padding-top: 20px; /* Espacio arriba de la columna de canales */
+    padding-bottom: 20px; /* Espacio debajo de la columna de canales */
+}
+
+
+#user-id-container {
+    display: inline-block; /* Para que ocupe solo el espacio necesario */
+    margin-right: 10px; /* Espacio a la derecha del usuario */
+    color: #fff; /* Color de texto blanco */
+}
+
+
+/*nuevo*/
+
+
+/* Estilo para el ícono circular */
+.icono-servidor {
+    width: 40px; /* Ancho del ícono */
+    height: 40px; /* Altura del ícono */
+    background-color: #007bff; /* Color de fondo del ícono (puedes cambiarlo) */
+    border-radius: 50%; /* Hace que el ícono sea circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px; /* Tamaño de la letra para la inicial */
+    color: white; /* Color de la letra */
+    margin-right: 10px; /* Espacio entre el ícono y el nombre */
+}
+
+/* Estilo para la inicial */
+.inicial-servidor {
+    text-transform: uppercase; /* Convierte la inicial en mayúscula */
+}
+
+
+.server-icon {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: #2a4cca; /* Cambia el color de fondo según tus preferencias */
+    color: #fff; /* Cambia el color del texto según tus preferencias */
+    text-align: center;
+    line-height: 60px; /* Alinea verticalmente el texto en el centro del icono */
+    border-radius: 30%; /* Para hacer que los iconos sean circulares */
+    cursor: pointer;
+    margin: 10px auto;
+    font-size: 24px; /* Tamaño de fuente del icono */
+}
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 1000;
+    /* Puedes ajustar la posición y el estilo según tus preferencias */
+}
+
+.pf1, .pf2, .pf3, .pf4 {
+    background: #36393f;
+    border-radius: 30px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+.pf1:hover, .pf3:hover img, .pf4:hover{
+    border-radius: 15px;
+}
+.pf1:hover .tooltip, .pf2:hover .tooltip, .pf3:hover .tooltip, .pf4:hover .tooltip {
+    opacity: 1;
+}
+.pf4:hover {
+    background: rgba(0, 207, 69, 0.5)
+}
+.pf4:hover svg path{
+    color: white;
+}
+
+/* Estilos para la barra de navegación */
+.navigation-bar {
+    background-color: #333;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    position: sticky;
+    top: 0; 
+    z-index: 1; 
+    width: 200px; 
+    margin-left: auto; 
+}
+
+/* Estilos para los iconos en la barra de navegación (puedes personalizarlos) */
+.nav-icon {
+    font-size: 24px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+/* Estilos para el buscador en la barra de navegación (puedes personalizarlos) */
+.nav-search {
+    display: flex;
+    align-items: center;
+    background-color: #444;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.nav-search input[type="text"] {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    outline: none;
+    width: 200px;
+}
+
+.nav-search input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+/* Estilos para el ícono de búsqueda en el buscador (puedes personalizarlos) */
+.nav-search i {
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.eliminar-servidor {
+    position: absolute;
+    display: none;
+    right: 15px; /* Ajusta la posición horizontal en el borde derecho */
+    bottom: 15px; /* Ajusta la posición vertical en el borde inferior */
+    background-color: red; /* Cambia el color de fondo según tus preferencias */
+    color: white; /* Cambia el color del texto según tus preferencias */
+    padding: 12px 3px; /* Ajusta el espaciado interno (menos padding) */
+    cursor: pointer; /* Cambia el cursor al puntero cuando se pasa el mouse */
+    border: none; /* Elimina el borde */
+    border-radius: 50%; /* Crea un aspecto circular */
+    font-size: 10px; /* Ajusta el tamaño del texto (hazlo más pequeño) */
+}
+
+
+
+.server-icon:hover .eliminar-servidor {
+    display: inline-block; /* Muestra el botón al pasar el mouse sobre el servidor */
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+   
+}
+
+.user-card {
+    background-color: #4e4e4e83;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    max-width: 300px; /* Ajusta el ancho máximo según tus preferencias */
+    margin: 0 auto; 
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.transparent-button {
+    background-color: transparent;
+    border: none; /* Para eliminar cualquier borde predeterminado */
+    cursor: pointer; /* Cambiar el cursor al estilo de un puntero cuando se pasa por encima */
+}
